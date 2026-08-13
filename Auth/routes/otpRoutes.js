@@ -181,7 +181,7 @@ router.post("/send-otp", async (req, res) => {
 		const { data, error } = await resend.emails.send({
 			from: "Linkite<me@rahulchowdhury.in>", // verified domain
 			to: email,
-			subject: "Linkite Onboarding - Verification Code",
+			subject: "Your verification code",
 			html,
 		});
 
