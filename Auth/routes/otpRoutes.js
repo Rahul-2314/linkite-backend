@@ -163,7 +163,7 @@ router.post("/send-otp", async (req, res) => {
 											color:#bbbbbb;
 											font-size:11px;
 										">
-											© 2026 Your App Name
+											© 2026 Linkite - Short & Secure
 										</p>
 									</td>
 								</tr>
@@ -179,9 +179,9 @@ router.post("/send-otp", async (req, res) => {
 		`;
 
 		const { data, error } = await resend.emails.send({
-			from: "Your App Name <me@rahulchowdhury.in>", // swap to your verified domain later
+			from: "Linkite - Short & Secure <me@rahulchowdhury.in>", // verified domain
 			to: email,
-			subject: "Your OTP Verification Code",
+			subject: "Linkite Onboarding - Verification Code",
 			html,
 		});
 
