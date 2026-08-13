@@ -5,13 +5,27 @@ const router = express.Router();
 
 const transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",
-	port: 587,
-	secure: false,
-	requireTLS: true,
+	port: 465,
+	secure: true, // true for 465, false for 587
 	auth: {
 		user: process.env.EMAIL_USER,
-		pass: process.env.EMAIL_PASS,
+		pass: process.env.EMAIL_PASS, // must be a Gmail App Password, not your account password
 	},
+	pool: true, // reuse connections instead of opening a new one per email
+	maxConnections: 3,
+	connectionTimeout: 20000, // 20s to establish TCP connection
+	greetingTimeout: 20000, // 20s to receive SMTP greeting
+	socketTimeout: 20000, // 20s of inactivity before killing the socket
+});
+
+// Verify connection on startup so failures show up in logs immediately,
+// not only when the first user tries to sign up
+transporter.verify((error) => {
+	if (error) {
+		console.error("Nodemailer transporter verification failed:", error);
+	} else {
+		console.log("Nodemailer transporter ready");
+	}
 });
 
 router.post("/send-otp", async (req, res) => {
@@ -204,6 +218,8 @@ router.post("/send-otp", async (req, res) => {
 		return res.status(500).json({
 			success: false,
 			message: "Failed to send OTP",
+			// surface the SMTP error code while debugging — remove in production
+			code: error.code,
 		});
 	}
 });
