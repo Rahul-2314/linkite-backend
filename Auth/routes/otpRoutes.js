@@ -179,7 +179,7 @@ router.post("/send-otp", async (req, res) => {
 		`;
 
 		const { data, error } = await resend.emails.send({
-			from: "Your App Name <onboarding@resend.dev>", // swap to your verified domain later
+			from: "Your App Name <me@rahulchowdhury.in>", // swap to your verified domain later
 			to: email,
 			subject: "Your OTP Verification Code",
 			html,
