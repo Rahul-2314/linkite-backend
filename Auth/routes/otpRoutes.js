@@ -51,7 +51,7 @@ router.post("/send-otp", async (req, res) => {
 								<!-- Header -->
 								<tr>
 									<td style="
-										background:linear-gradient(135deg,#667eea,#764ba2);
+										background:#031f39;
 										padding:35px 30px;
 										text-align:center;
 									">
@@ -66,7 +66,7 @@ router.post("/send-otp", async (req, res) => {
 
 										<p style="
 											margin:10px 0 0;
-											color:#eeeeff;
+											color:#c7d6e3;
 											font-size:15px;
 										">
 											Let's verify your email address
@@ -80,7 +80,7 @@ router.post("/send-otp", async (req, res) => {
 
 										<p style="
 											margin:0 0 15px;
-											color:#333333;
+											color:#031f39;
 											font-size:18px;
 										">
 											Hi <strong>${name}</strong>,
@@ -106,14 +106,14 @@ router.post("/send-otp", async (req, res) => {
 												<td align="center">
 													<div style="
 														display:inline-block;
-														background:#f3f0ff;
-														border:2px dashed #764ba2;
+														background:#ffffff;
+														border:2px dashed #031f39;
 														border-radius:14px;
 														padding:18px 35px;
 														letter-spacing:10px;
 														font-size:34px;
 														font-weight:bold;
-														color:#5a3d91;
+														color:#031f39;
 													">
 														${otp}
 													</div>
@@ -145,13 +145,13 @@ router.post("/send-otp", async (req, res) => {
 								<!-- Footer -->
 								<tr>
 									<td style="
-										background:#f8f9fc;
+										background:#031f39;
 										padding:22px;
 										text-align:center;
 									">
 										<p style="
 											margin:0;
-											color:#999999;
+											color:#c7d6e3;
 											font-size:12px;
 										">
 											If you didn't request this verification code,
@@ -160,7 +160,7 @@ router.post("/send-otp", async (req, res) => {
 
 										<p style="
 											margin:10px 0 0;
-											color:#bbbbbb;
+											color:#8fa3b5;
 											font-size:11px;
 										">
 											© 2026 Linkite - Short & Secure
@@ -179,7 +179,7 @@ router.post("/send-otp", async (req, res) => {
 		`;
 
 		const { data, error } = await resend.emails.send({
-			from: "Linkite - Short & Secure <me@rahulchowdhury.in>", // verified domain
+			from: "Linkite<me@rahulchowdhury.in>", // verified domain
 			to: email,
 			subject: "Linkite Onboarding - Verification Code",
 			html,
